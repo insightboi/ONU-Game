@@ -4,24 +4,19 @@
  */
 
 import { useEffect, useRef } from 'react';
-import { startGame } from '../client/src/main';
 
 export default function App() {
-  const gameRef = useRef<HTMLDivElement>(null);
+  const initialized = useRef(false);
 
   useEffect(() => {
-    if (!gameRef.current) return;
-    
-    const game = startGame(gameRef.current);
-    
-    return () => {
-      game.destroy(true);
-    };
+    if (!initialized.current) {
+      initialized.current = true;
+      import('../client/src/main');
+    }
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-neutral-900">
-      <div ref={gameRef} id="game-container" className="shadow-2xl rounded-lg overflow-hidden" />
+    <div className="flex items-center justify-center min-h-screen bg-neutral-900" id="game-container">
     </div>
   );
 }
