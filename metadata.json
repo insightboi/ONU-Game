@@ -1,0 +1,5 @@
+{
+  "name": "Phaser 3 Game",
+  "description": "A basic Phaser 3 project structure with MainMenu and Lobby scenes.",
+  "requestFramePermissions": []
+}
