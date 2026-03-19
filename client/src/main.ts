@@ -1,16 +1,24 @@
-import Phaser from 'phaser';
-import { MainMenuScene } from './scenes/MainMenuScene';
-import { LobbyScene } from './scenes/LobbyScene';
+import Phaser from "phaser";
 
-export const config: Phaser.Types.Core.GameConfig = {
+class BootScene extends Phaser.Scene {
+  constructor() {
+    super("BootScene");
+  }
+
+  create() {
+    this.add.text(300, 250, "ONU Running", {
+      color: "#ffffff",
+      fontSize: "24px"
+    });
+  }
+}
+
+const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   width: 800,
   height: 600,
-  backgroundColor: '#121212',
-  parent: 'game-container',
-  scene: [MainMenuScene, LobbyScene],
+  backgroundColor: "#121212",
+  scene: [BootScene]
 };
 
-export const startGame = (parent: string | HTMLElement) => {
-  return new Phaser.Game({ ...config, parent });
-};
+new Phaser.Game(config);
